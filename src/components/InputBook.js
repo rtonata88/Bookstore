@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addBook } from '../redux/books/books';
+import { postBook } from '../redux/books/books';
 
 const inputBook = () => {
   const [title, setTitle] = useState('');
@@ -17,30 +17,30 @@ const inputBook = () => {
     };
 
     // dispatch an action and pass it the newBook object (your action's payload)
-    dispatch(addBook(newBook));
+    // dispatch(addBook(newBook));
     dispatch(postBook(newBook));
   };
   return (
-    <form className='form-container'>
+    <form className="form-container">
       <input
-        type='text'
-        placeholder='Title'
-        className='input-text'
-        name='title'
+        type="text"
+        placeholder="Title"
+        className="input-text"
+        name="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <input
-        type='text'
-        placeholder='Category'
-        className='input-text'
-        name='category'
+        type="text"
+        placeholder="Category"
+        className="input-text"
+        name="category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       />
       <button
-        type='button'
-        className='input-submit'
+        type="button"
+        className="input-submit"
         onClick={submitBookToStore}
       >
         Add Book

@@ -1,6 +1,5 @@
 const APP_ID = 'n1i3Sr12LOBQ7bSgmbZC';
-const BASE_API =
-  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps';
+const BASE_API = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps';
 const API_URL = `${BASE_API}/${APP_ID}/books`;
 
 const POST_BOOK = 'bookStore/books/POST_BOOK';
@@ -19,20 +18,10 @@ export const removeBook = (payload) => ({
   payload,
 });
 
-export const postBook = async (payload) => {
-  const response = await fetch(API_URL, {
-    method: 'post',
-    body: JSON.stringify({
-      title: payload.title,
-      id: payload.id,
-      category: payload.category,
-    }),
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  });
-};
+export const postBook = (payload) => ({
+  type: POST_BOOK,
+  payload,
+});
 
 export const getBooks = async () => {
   const response = await fetch(API_URL);
@@ -55,8 +44,30 @@ const reducer = (state = initialState, action) => {
     case ADD_BOOK:
       return [...state, action.payload];
     case REMOVE_BOOK:
+      fetch(`${API_URL}/${action.payload.id}`, {
+        method: 'delete',
+        body: JSON.stringify({
+          item_id: action.payload.id,
+        }),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
       return state.filter((book) => book.id !== action.payload.id);
     case POST_BOOK:
+      fetch(API_URL, {
+        method: 'post',
+        body: JSON.stringify({
+          title: action.payload.title,
+          item_id: action.payload.id,
+          category: action.payload.category,
+        }),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
       return [...state, action.payload];
     default:
       return state;
