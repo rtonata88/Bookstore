@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeBook, getBookItemsFromApi } from '../redux/books/books';
+import { deleteBook, getBooks } from '../redux/books/books';
 import BookItem from './BookItem';
 
 const BookList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBookItemsFromApi());
+    dispatch(getBooks());
   }, []);
 
   const removeBookFromStore = (bookId) => {
@@ -15,7 +15,7 @@ const BookList = () => {
       id: bookId,
     };
 
-    dispatch(removeBook(book));
+    dispatch(deleteBook(book));
   };
 
   const booksSelector = useSelector((state) => state.booksReducer);
