@@ -5,7 +5,7 @@ import { addBook } from '../redux/books/books';
 
 const inputBook = () => {
   const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
+  const [category, setCategory] = useState('');
 
   const dispatch = useDispatch();
 
@@ -13,33 +13,34 @@ const inputBook = () => {
     const newBook = {
       id: uuidv4(), // make sure it's unique
       title,
-      author,
+      category,
     };
 
     // dispatch an action and pass it the newBook object (your action's payload)
     dispatch(addBook(newBook));
+    dispatch(postBook(newBook));
   };
   return (
-    <form className="form-container">
+    <form className='form-container'>
       <input
-        type="text"
-        placeholder="Title"
-        className="input-text"
-        name="title"
+        type='text'
+        placeholder='Title'
+        className='input-text'
+        name='title'
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <input
-        type="text"
-        placeholder="Author"
-        className="input-text"
-        name="author"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
+        type='text'
+        placeholder='Category'
+        className='input-text'
+        name='category'
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
       />
       <button
-        type="button"
-        className="input-submit"
+        type='button'
+        className='input-submit'
         onClick={submitBookToStore}
       >
         Add Book
