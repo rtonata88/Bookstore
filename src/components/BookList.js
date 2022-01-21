@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/books';
+import { deleteBook, getBooks } from '../redux/books/books';
 import BookItem from './BookItem';
 
 const BookList = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, []);
 
   const removeBookFromStore = (bookId) => {
     const book = {
       id: bookId,
     };
 
-    dispatch(removeBook(book));
+    dispatch(deleteBook(book));
   };
 
-  const books = useSelector((state) => state.booksReducer);
-  const bookList = books.map((book) => (
+  const booksSelector = useSelector((state) => state.booksReducer);
+
+  const books = booksSelector.map((book) => (
     <BookItem
       key={book.id}
       book={book}
@@ -23,6 +28,6 @@ const BookList = () => {
     />
   ));
 
-  return <div className="bookList">{bookList}</div>;
+  return <div className="bookList">{books}</div>;
 };
 export default BookList;

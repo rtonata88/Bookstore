@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addBook } from '../redux/books/books';
+import { postBook } from '../redux/books/books';
 
 const inputBook = () => {
   const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
+  const [category, setCategory] = useState('');
 
   const dispatch = useDispatch();
 
@@ -13,11 +13,12 @@ const inputBook = () => {
     const newBook = {
       id: uuidv4(), // make sure it's unique
       title,
-      author,
+      category,
     };
 
     // dispatch an action and pass it the newBook object (your action's payload)
-    dispatch(addBook(newBook));
+    // dispatch(addBook(newBook));
+    dispatch(postBook(newBook));
   };
   return (
     <form className="form-container">
@@ -31,11 +32,11 @@ const inputBook = () => {
       />
       <input
         type="text"
-        placeholder="Author"
+        placeholder="Category"
         className="input-text"
-        name="author"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
+        name="category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
       />
       <button
         type="button"

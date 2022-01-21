@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const BookItem = ({ book, removeBook }) => {
-  const { title, author } = book;
+  // const keys =
+
+  const { title, category } = book;
   return (
     <div className="bookItem">
       <p>
         {title}
         {' '}
         -
-        <i>{author}</i>
+        <i>{category}</i>
       </p>
       <button type="button" onClick={removeBook}>
         Remove
@@ -20,7 +22,7 @@ const BookItem = ({ book, removeBook }) => {
 
 BookItem.propTypes = {
   book: PropTypes.shape({
-    author: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
   removeBook: PropTypes.func.isRequired,
