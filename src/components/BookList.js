@@ -28,6 +28,13 @@ const BookList = () => {
     />
   ));
 
-  return <div className="bookList">{books}</div>;
+  return (
+    <div>
+      <div className="row">
+        <div className="col-md-12">{books}</div>
+      </div>
+      <hr />
+    </div>
+  );
 };
 export default BookList;

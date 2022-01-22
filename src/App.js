@@ -5,10 +5,12 @@ import './App.css';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<BooksContainer />} />
-      <Route path="/categories" element={<CategoriesContainer />} />
-    </Routes>
+    <div className="py-3 container">
+      <Routes>
+        <Route path="/" element={<BooksContainer />} />
+        <Route path="/categories" element={<CategoriesContainer />} />
+      </Routes>
+    </div>
   );
 }
 
