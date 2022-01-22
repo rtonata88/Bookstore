@@ -92,3 +92,35 @@ body {
   letter-spacing: normal;
   color: #4386bf  !important;
 }
+
+.current-chapter{
+  height: 1.125rem;
+  opacity: 0.5;
+  font-family: 'RobotoSlab', serif !important;
+  font-size: 0.813rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #121212;
+  text-transform: uppercase;
+}
+
+.current-lesson {
+  height: 1.313rem;
+  font-family: 'RobotoSlab', serif !important;
+  font-size: 1rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.4px;
+  color: #121212;
+}
+
+.btn-update-progress{
+  border-radius: 3px;
+  background-color: #0290ff;
+  text-transform: uppercase;
+}
