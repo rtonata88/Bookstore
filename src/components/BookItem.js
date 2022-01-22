@@ -6,30 +6,34 @@ const BookItem = ({ book, removeBook }) => {
 
   const { title, category } = book;
   return (
-    <div className="card shadow-sm book-item">
-      <div className="card-body">
-        <p className="book-category">{category}</p>
-        <p className="book-title">{title}</p>
-        <div className="d-flex justify-content-start align-items-center">
-          <button
-            type="button"
-            className="btn btn-link book-links border-end-1"
-          >
-            Comments
-          </button>
+    <div className='card shadow-sm book-item'>
+      <div className='card-body'>
+        <div className='col-md-5 col-sm-12'>
+          <p className='book-category'>{category}</p>
+          <p className='book-title'>{title}</p>
+          <p className='book-author'>Richard Chambula</p>
+          <div className='d-flex justify-content-start align-items-center'>
+            <button
+              type='button'
+              className='btn btn-link book-links border-end border-end-1'
+            >
+              Comments
+            </button>
 
-          <button
-            type="button"
-            className="btn btn-link book-links border-end-1"
-            onClick={removeBook}
-          >
-            Remove
-          </button>
+            <button
+              type='button'
+              className='btn btn-link book-links border-end border-end-1 px-2'
+              onClick={removeBook}
+            >
+              Remove
+            </button>
 
-          <button type="button" className="btn btn-link book-links">
-            Edit
-          </button>
+            <button type='button' className='btn btn-link book-links px-2'>
+              Edit
+            </button>
+          </div>
         </div>
+        <div className='col-md-4 col-sm-12'></div>
       </div>
     </div>
   );
