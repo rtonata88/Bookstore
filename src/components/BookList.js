@@ -29,8 +29,11 @@ const BookList = () => {
   ));
 
   return (
-    <div className='row'>
-      <div className='col-md-12'>{books}</div>
+    <div>
+      <div className="row">
+        <div className="col-md-12">{books}</div>
+      </div>
+      <hr />
     </div>
   );
 };

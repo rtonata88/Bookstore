@@ -21,31 +21,50 @@ const inputBook = () => {
     dispatch(postBook(newBook));
   };
   return (
-    <form className="form-container">
-      <input
-        type="text"
-        placeholder="Title"
-        className="input-text"
-        name="title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Category"
-        className="input-text"
-        name="category"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      />
-      <button
-        type="button"
-        className="input-submit"
-        onClick={submitBookToStore}
-      >
-        Add Book
-      </button>
-    </form>
+    <div className="row">
+      <div className="bg-light">
+        <div className="card-body">
+          <form>
+            <div className="row">
+              <p className="add-book-title">Add new book</p>
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  placeholder="Title"
+                  className="form-control"
+                  name="title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
+              <div className="col-md-4">
+                <select
+                  name="category"
+                  className="form-control"
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  <option value="Fiction">Fiction</option>
+                  <option value="Romance">Romance</option>
+                  <option value="Action">Action</option>
+                  <option value="Business">Business</option>
+                  <option value="Sci-Fi">Sci-Fi</option>
+                  <option value="Technology">Technology</option>
+                </select>
+              </div>
+              <div className="col-md-2">
+                <button
+                  type="button"
+                  className="btn btn-primary btn-update-progress"
+                  onClick={submitBookToStore}
+                >
+                  Add Book
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 
